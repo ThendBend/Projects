@@ -1,0 +1,1 @@
+*{margin:0;padding:0;}ul{text-shadow:-0.5px -0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px 0.5px 0 #000;}nav{font-size:1.5vw;width:100%;height:50px;position:sticky;top:0;z-index:10;background:cornsilk;}nav ul{display:flex;margin:0;border:0;padding:0 50px;padding-left:47%;}nav ul li{list-style:none;margin-top:10px;}nav ul li a{text-decoration:none;}
