@@ -1,0 +1,24 @@
+﻿  Game.cpp
+c:\users\win7\source\repos\woh\woh\game.cpp(8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(109): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(130): warning C4018: '<': signed/unsigned mismatch
+c:\users\win7\source\repos\woh\woh\game.cpp(146): warning C4018: '<=': signed/unsigned mismatch
+c:\users\win7\source\repos\woh\woh\game.cpp(167): warning C4018: '<=': signed/unsigned mismatch
+c:\users\win7\source\repos\woh\woh\game.cpp(169): warning C4018: '<': signed/unsigned mismatch
+c:\users\win7\source\repos\woh\woh\game.cpp(246): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(250): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(251): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(280): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(281): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(282): warning C4244: 'argument': conversion from '__int64' to 'int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(357): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(381): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(401): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\win7\source\repos\woh\woh\game.cpp(602): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Source.cpp
+  Generating code
+  1 of 659 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  WoH.vcxproj -> C:\Users\win7\source\repos\WoH\Release\WoH.exe

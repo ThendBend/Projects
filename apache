@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+    ServerName www.yourwebsite.com
+    Redirect permanent / https://www.yourwebsite.com/
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot "Your website folder directory"
+    ServerName https://www.yourwebsite.com
+    SSLEngine on
+    SSLCertificateFile "conf/ssl.crt/server.crt"
+    SSLCertificateKeyFile "conf/ssl.key/server.key"
+    <Directory "Your website folder directory">
+    Options All
+    AllowOverride All
+    Require all granted
+    </Directory>
+</VirtualHost>

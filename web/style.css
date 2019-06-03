@@ -1,0 +1,254 @@
+*{
+    margin:0px;
+    padding:0;
+}
+
+body, html {
+    height: 100%;
+}
+ul{
+    text-shadow: 5px 5px 9px darkred;
+}
+nav{
+    font-size: 1.3vw;
+    position: fixed;
+    z-index: 1000;
+    top: 0%;
+    bottom: 0%; 
+    width: 150px;
+    background-color:navy;
+    overflow-x: hidden;
+    position: fixed;
+}
+nav ul li a:hover {
+    color: #f1f1f1;
+}
+nav ul{
+    margin:0;border:0;
+}
+nav ul li{
+    list-style:none;
+}
+nav ul li a{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor:pointer;
+    display:block;
+    padding:20px 20px;
+    text-decoration: none;
+}
+.seapic { 
+    background-image: url("sea.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.layer2 {
+    display:none;
+    font-size:1.5vw;
+    color:rgb(15, 27, 56)
+}
+.seapic:hover .layer2{
+    background-color: rgba(218, 165, 32, 0.83);
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.seapic:hover .makeinvi2{
+    display:none;
+}
+
+.cabin {
+    background-image:url('cabin.jpg');
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.layer{
+    display:none;
+    font-size:1.5vw;
+    color:rgb(15, 27, 56)
+}
+
+
+.cabin:hover .layer{
+    background-color: rgba(222, 184, 135, 0.83);
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.cabin:hover .makeinvi{
+    display:none;
+}
+
+.para{
+    padding-top:100px;
+}
+
+.paraleft {
+    position: absolute;
+    right:25%;
+    padding: 50px 300px;
+}
+
+.pararight {
+    position: absolute;
+    left:50%;
+    padding: 50px 150px;
+}
+.goldenrod{
+    color:goldenrod;
+}
+.deepskyblue{
+    color:deepskyblue;
+}
+.dodgerblue{
+    color:dodgerblue;
+}
+.burlywood{
+    color:burlywood;
+}
+
+.khaki{
+    color:khaki;
+}
+.limegreen{
+    color:limegreen;
+}
+.indianred{
+    color:indianred;
+}
+
+.welcomeleft{
+    position: absolute;
+    right:20%;
+    font-size: 1.5vw;
+}
+
+.welcomeright{
+    position: absolute;
+    left:55%;
+    font-size: 1.2vw;
+}
+
+.welcome1{
+    padding:10px 300px;
+}
+.welcome2{
+    padding:10px 300px;
+}
+.welcome3{
+    padding:10px 100px;
+}
+.welcome4{
+    padding:10px 100px;
+}
+.welcome5{
+    padding:10px 100px;
+}
+.welcome6{
+    padding:10px 100px;
+}
+
+.layer3{
+    display:none;
+    font-size:1.5vw;
+    color:rgb(15, 27, 56)
+}
+
+.wintfish:hover .layer3{
+    background-color: rgba(0, 191, 255, 0.83);
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.wintfish:hover .makeinvi3{
+    display:none;
+}
+
+.wintfish{
+    height: 100%;
+    background-image:url('wint.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: slider 20s infinite;
+}
+
+@keyframes slider{
+    0%{background-image:url('wint.jpg');}
+    20%{background-image:url('wint2.jpg');}
+    40%{background-image:url('wint3.jpg');}
+    60%{background-image:url('wint4.jpg');}
+    80%{background-image:url('wint5.jpg');}
+}
+
+.paraleft2 {
+    position: absolute;
+    padding: 50px 300px;
+    left:8%;
+}
+
+.pararight2 {
+    position: absolute;
+    padding: 0px 200px;
+    padding-top:250px;
+    left:25%;
+}
+
+
+.layer6{
+    display:none;
+    font-size:1.5vw;
+    color:rgb(15, 27, 56)
+}
+
+#contact:hover .layer6{
+    background-color: rgba(50, 205, 50, 0.83);
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#contact:hover .makeinvi6{
+    display:none;
+}
+
+#contact {
+    height: 100%;
+    background-image:url('wint.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cont1 {
+    position: absolute;
+    padding-top:250px;
+    left:20%;
+
+}
+
+.cont2{
+    position: absolute;
+    padding-top:200px;
+    right:20%;
+}
+
+#map{
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

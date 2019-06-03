@@ -1,0 +1,218 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+struct Room {
+	char eventAns[100][9][63];
+};
+
+struct Room Event[10];
+char eventDetails[1000];
+int numOfEvents[10] = { 0,0,0,0,0,0,0,0,0,0 };
+char roomNo[63];
+char description[63];
+int cntChrono = 21;
+int chronoOrder[10] = { 0 };
+
+
+
+void addEvent();
+void mainMenu();
+void listEvent();
+void roomDetails();
+void deleteEvent();
+
+int main() {
+	mainMenu();
+	getchar();
+	return 0;
+}
+
+void addEvent() {
+	int cnt3 = 0;
+	int cnt4 = 0;
+	int check = 0;
+	for (int i = 2; i < strlen(eventDetails); i++) {
+		if (cnt3 < 9) {
+			if (eventDetails[i] == ':') {
+				check++;
+			}
+			else if (check == 4) {
+				for (int z = 0; z < 10; z++) {
+					if (eventDetails[i] > '1' && eventDetails[i] <= '9') {
+						if ((eventDetails[i] - 49) == chronoOrder[z]) {
+							cntChrono = z;
+							break;
+						}
+					}
+					else if (eventDetails[i + 1] == '0') {
+						if (chronoOrder[z] == 9) {
+							cntChrono = z;
+							break;
+						}
+					}
+					else if (eventDetails[i] == '1') {
+						if (chronoOrder[z] == 1) {
+							cntChrono = z;
+							break;
+						}
+					}
+					if (z == 9 && cntChrono != 21) {
+						cntChrono++;
+						if (chronoOrder[cntChrono] == 0) {
+							if (eventDetails[i] > '1' && eventDetails[i] <= '9') {
+								chronoOrder[cntChrono] = (eventDetails[i] - 49);
+							}
+							else if (eventDetails[i + 1] == '0') {
+								chronoOrder[cntChrono] = 9;
+							}
+							else {
+								chronoOrder[cntChrono] = 0;
+							}
+						}
+					}
+					else if (z == 9) {
+						cntChrono = 0;
+						if (chronoOrder[cntChrono] == 0) {
+							if (eventDetails[i] > '1' && eventDetails[i] <= '9') {
+								chronoOrder[cntChrono] = (eventDetails[i] - 49);
+							}
+							else if (eventDetails[i + 1] == '0') {
+								chronoOrder[cntChrono] = 9;
+							}
+							else {
+								chronoOrder[cntChrono] = 0;
+							}
+						}
+					}
+				}
+				break;
+			}
+		}
+	}
+	for (int i = 2; i < strlen(eventDetails); i++) {
+		if (cnt3 < 9) {
+			if (eventDetails[i] != ':' && eventDetails[i] != '\n') {
+				Event[chronoOrder[cntChrono]].eventAns[numOfEvents[chronoOrder[cntChrono]]][cnt3][cnt4] = eventDetails[i];
+				cnt4++;
+			}
+			else if (eventDetails[i] == ':' || eventDetails[i] == '\n') {
+				Event[chronoOrder[cntChrono]].eventAns[numOfEvents[chronoOrder[cntChrono]]][cnt3][cnt4] = '\0';
+				cnt3++;
+				cnt4 = 0;
+			}
+		}
+	}
+	numOfEvents[chronoOrder[cntChrono]]++;
+	mainMenu();
+}
+
+void mainMenu() {
+	printf("Commands:\na - Create a new event (a Description:Date:Time:Duration:Room:Responsible:Participant:Participant:Participant) \nl - list all events\ns - list events in given room (s sala)\nr - Delete an event (r description)\ncls - clear screen\n");
+	fgets(eventDetails, 1000, stdin);
+	if (eventDetails[0] == 'a' && eventDetails[1] == ' ') {
+		addEvent();
+	}
+	else if (eventDetails[0] == 'l' && eventDetails[1] == '\n') {
+		listEvent();
+	}
+	else if (eventDetails[0] == 's' && eventDetails[1] == ' ') {
+		int cnt = 0;
+		for (int i = 2; i < strlen(eventDetails); i++) {
+			if (i < strlen(eventDetails) - 1) {
+				roomNo[cnt] = eventDetails[i];
+				cnt++;
+			}
+			else {
+				roomNo[cnt] = '\0';
+			}
+		}
+		roomDetails();
+	}
+	else if (eventDetails[0] == 'r' && eventDetails[1] == ' ') {
+		int cnt = 0;
+		for (int i = 2; i < 63 || i < strlen(eventDetails); i++) {
+			if (eventDetails[i] != 0) {
+				description[cnt] = eventDetails[i];
+				cnt++;
+			}
+			else {
+				description[cnt - 1] = 0;
+				break;
+			}
+		}
+		deleteEvent();
+	}
+	else if (strcmp(eventDetails, "cls\n") == 0) {
+		system("CLS");
+		mainMenu();
+	}
+	else {
+		printf("\nERROR! Command not found! Please try again!\n\n");
+		mainMenu();
+	}
+}
+
+
+void listEvent() {
+	int cnt = 0;
+	printf("\n");
+	for (int i = 0; i < 10; i++) {
+		for (int z = 0; z < 100; z++) {
+			if (Event[i].eventAns[z][0][0] != 0) {
+				printf("Room No %s %s\n", Event[i].eventAns[z][4], Event[i].eventAns[z][0]);
+				cnt++;
+			}
+		}
+		if (cnt < 1 && i == 9) {
+			printf("No events available!\n");
+		}
+	}
+	printf("\n");
+	mainMenu();
+}
+
+void roomDetails() {
+	printf("\n");
+	int cnt = 0;
+	for (int i = 0; i < 10; i++) {
+		for (int z = 0; z < 100; z++) {
+			if (strcmp(roomNo, Event[i].eventAns[z][4]) == 0) {
+				printf("Event No 1 ");
+				for (int l = 0; l < 9; l++) {
+					if (Event[i].eventAns[z][l][0] != 0) {
+						printf("%s", Event[i].eventAns[z][l]);
+						if (Event[i].eventAns[z][l + 1][0] != 0) {
+							printf(":");
+						}
+						cnt++;
+					}
+				}
+				printf("\n");
+			}
+		}
+	}
+	printf("\n");
+	if (cnt < 1) {
+		printf("No events found in that room!\n\n");
+	}
+	mainMenu();
+}
+
+void deleteEvent() {
+	for (int z = 0; z < 10; z++) {
+		for (int i = 0; i < 100; i++) {
+			if ((strcmp(description, Event[z].eventAns[i][0])) == 0) {
+				for (int c = i; c < 100; c++) {
+					for (int b = 0; b < 9; b++) {
+						for (int d = 0; d < 63; d++) {
+							Event[z].eventAns[c][b][d] = Event[z].eventAns[c + 1][b][d];
+						}
+					}
+				}
+				numOfEvents[z]--;
+				mainMenu();
+			}
+		}
+	}
+}
