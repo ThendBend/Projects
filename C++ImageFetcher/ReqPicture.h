@@ -84,7 +84,7 @@ static bool FetchPicture(std::string imageName="", std::string fileName="", int 
 			std::getline(std::cin, fileName);
 			if (!fileName.empty())
 				break;
-			printf("Image name can't be empty, please try again: ");
+			printf("File name can't be empty, please try again: ");
 		}
 
 		printf("Do you want to connect using ipv6?\n");
@@ -123,7 +123,7 @@ static bool FetchPicture(std::string imageName="", std::string fileName="", int 
 				std::getline(std::cin, fileName);
 				if (!fileName.empty())
 					break;
-				printf("Image name can't be empty, please try again: ");
+				printf("File name can't be empty, please try again: ");
 			}
 		}
 
@@ -141,7 +141,14 @@ static bool FetchPicture(std::string imageName="", std::string fileName="", int 
 	}
 
 
-	if (fileName.substr(fileName.size() - 4, 4) != ".jpg")
+	if (fileName.size() > 3)
+	{
+		if (fileName.substr(fileName.size() - 4, 4) != ".jpg")
+		{
+			fileName += ".jpg";
+		}
+	}
+	else
 	{
 		fileName += ".jpg";
 	}
