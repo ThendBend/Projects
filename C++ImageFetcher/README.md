@@ -12,3 +12,5 @@ You can then slowly go deeper from there, by looking at the ReqPicture class fun
 NOTE: You can also change the cnt and cnt2 variables in the FetchPicture() function in ReqPicture.h, increasing/decreasing it for more/less tries.
 
 You can now specify if you want to use ipv6 or ipv4, by adding a third argument in the FetchPicture() function. PF_INET for ipv4 or PF_INET6 for ipv6. If left empty then ipv4 is chosen by default.
+
+New feature: You can now leave the function FetchPicture() with empty arguments, to be prompted on the console to enter the information required, instead of hard coding it.

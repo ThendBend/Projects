@@ -70,10 +70,22 @@ static bool FetchPicture(std::string imageName="", std::string fileName="", int 
 	if (imageName.empty() && fileName.empty() && sockType == -1)
 	{
 		printf("Please type an image to search for: ");
-		std::getline(std::cin, imageName);
+		while (true)
+		{
+			std::getline(std::cin, imageName);
+			if (!imageName.empty())
+				break;
+			printf("Image name can't be empty, please try again: ");
+		}
 
 		printf("Please type the file name to save the image to: ");
-		std::getline(std::cin, fileName);
+		while (true)
+		{
+			std::getline(std::cin, fileName);
+			if (!fileName.empty())
+				break;
+			printf("Image name can't be empty, please try again: ");
+		}
 
 		printf("Do you want to connect using ipv6?\n");
 		printf("[1] Yes\n");
@@ -106,14 +118,25 @@ static bool FetchPicture(std::string imageName="", std::string fileName="", int 
 	{
 		if (fileName.empty())
 		{
-			printf("Please type the file name to save the image to: ");
-			std::getline(std::cin, fileName);
+			while (true)
+			{
+				std::getline(std::cin, fileName);
+				if (!fileName.empty())
+					break;
+				printf("Image name can't be empty, please try again: ");
+			}
 		}
 
 		if (imageName.empty())
 		{
 			printf("Please type an image to search for: ");
-			std::getline(std::cin, imageName);
+			while (true)
+			{
+				std::getline(std::cin, imageName);
+				if (!imageName.empty())
+					break;
+				printf("Image name can't be empty, please try again: ");
+			}
 		}
 	}
 
