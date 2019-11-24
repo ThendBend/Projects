@@ -48,7 +48,7 @@ bool ReqPicture::ConnectSocket()
 	//Only a few options for now
 	for (PADDRINFOA i = result; i != NULL; i = i->ai_next)
 	{
-		switch (result->ai_family)
+		switch (i->ai_family)
 		{
 		case PF_INET:
 		{
