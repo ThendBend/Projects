@@ -8,3 +8,5 @@ Look at the Source.cpp for an example of how to fetch using the ReqPicture heade
 If you want to go even deeper then look at the FetchPicture() function inside ReqPicture.h
 
 You can then slowly go deeper from there, by looking at the ReqPicture class functions which FetchPicture() calls.
+
+NOTE: You can also change the cnt and cnt2 variables in the FetchPicture() function in ReqPicture.h, increasing/decreasing it for more/less tries.
