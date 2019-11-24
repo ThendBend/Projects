@@ -10,3 +10,5 @@ If you want to go even deeper then look at the FetchPicture() function inside Re
 You can then slowly go deeper from there, by looking at the ReqPicture class functions which FetchPicture() calls.
 
 NOTE: You can also change the cnt and cnt2 variables in the FetchPicture() function in ReqPicture.h, increasing/decreasing it for more/less tries.
+
+You can now specify if you want to use ipv6 or ipv4, by adding a third argument in the FetchPicture() function. PF_INET for ipv4 or PF_INET6 for ipv4. If left empty then ipv4 is chosen by default.
