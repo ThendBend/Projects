@@ -1,5 +1,4 @@
 #include "ReqPicture.h"
-#include "base64.h"
 
 
 ReqPicture::ReqPicture(std::string address):url(address){}
@@ -16,23 +15,47 @@ bool ReqPicture::ConnectSocket()
 		printf("failed to start WSA\n");
 		return false;
 	}
-	sock = socket(AF_INET, SOCK_STREAM, 0);
+	sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sock == INVALID_SOCKET)
 	{
 		printf("failed to create stream socket\n");
 		return false;
 	}
-	if ((host = gethostbyname(url.c_str())) == NULL) {
-		printf("failed to get host name\n");
+
+	ZeroMemory(&info, sizeof(info));
+	info.ai_family = AF_UNSPEC;
+	info.ai_socktype = SOCK_STREAM;
+	info.ai_protocol = IPPROTO_TCP;
+
+	if (getaddrinfo(url.c_str(), "443", &info, &result) != 0)
+	{
+		printf("failed\n");
 		return false;
 	}
-	sockAddr.sin_addr.s_addr = *(unsigned int*)host->h_addr;
-	sockAddr.sin_family = AF_INET;
-	sockAddr.sin_port = htons(443);
-	if (connect(sock, (SOCKADDR*)&sockAddr, sizeof(sockAddr)) == SOCKET_ERROR)
+
+	//Only a few options for now
+	switch (result->ai_family)
 	{
-		printf("Failed to connect to server\n");
-		return false;
+	case AF_INET:
+	{
+		sockAddr = *(SOCKADDR_IN*)result->ai_addr;
+		if (connect(sock, (SOCKADDR*)&sockAddr, sizeof(sockAddr)) == SOCKET_ERROR)
+		{
+			printf("Failed to connect to server\n");
+			return false;
+		}
+		break;
+	}
+	case AF_INET6:
+	{
+		sockAddr6 = *(SOCKADDR_IN6*)result->ai_addr;
+		if (connect(sock, (SOCKADDR*)&sockAddr, sizeof(sockAddr)) == SOCKET_ERROR)
+		{
+			printf("Failed to connect to server\n");
+			return false;
+		}
+		break;
+	}
 	}
 
 	return true;

@@ -3,12 +3,11 @@
 #define SECURITY_WIN32
 
 #include <iostream>
-#include <windows.h>
+#include <WS2tcpip.h>
 #include <schannel.h>
 #include <sspi.h>
 #include <fstream>
 #include <regex>
-#include <chrono>
 
 
 
@@ -31,8 +30,10 @@ private:
 	int port;
 	SOCKET sock;
 	SOCKADDR_IN sockAddr;
+	SOCKADDR_IN6 sockAddr6;
+	ADDRINFOA info;
+	PADDRINFOA result;
 	WSADATA wsaData;
-	struct hostent* host;
 
 	//variables used to establish a handshake - DoHandshake()
 	SecBuffer buffersI[1];
