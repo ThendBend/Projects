@@ -8,6 +8,7 @@
 #include <sspi.h>
 #include <fstream>
 #include <regex>
+#include <conio.h>
 
 
 
@@ -64,8 +65,64 @@ public:
 };
 
 
-static bool FetchPicture(std::string imageName, std::string fileName, int sockType=-1)
+static bool FetchPicture(std::string imageName="", std::string fileName="", int sockType=-1)
 {
+	if (imageName.empty() && fileName.empty() && sockType == -1)
+	{
+		printf("Please type an image to search for: ");
+		std::getline(std::cin, imageName);
+
+		printf("Please type the file name to save the image to: ");
+		std::getline(std::cin, fileName);
+
+		printf("Do you want to connect using ipv6?\n");
+		printf("[1] Yes\n");
+		printf("[2] No\n");
+
+		bool chose = false;
+		while (!chose) {
+			char choice = _getch();
+			switch (choice)
+			{
+			case '1':
+			{
+				sockType = PF_INET6;
+				chose = true;
+				break;
+			}
+			case '2':
+			{
+				sockType = PF_INET;
+				chose = true;
+				break;
+			}
+			default:
+			{
+				continue;
+			}
+			}
+		}
+	} else
+	{
+		if (fileName.empty())
+		{
+			printf("Please type the file name to save the image to: ");
+			std::getline(std::cin, fileName);
+		}
+
+		if (imageName.empty())
+		{
+			printf("Please type an image to search for: ");
+			std::getline(std::cin, imageName);
+		}
+	}
+
+
+	if (fileName.substr(fileName.size() - 4, 4) != ".jpg")
+	{
+		fileName += ".jpg";
+	}
+
 
 	if (imageName.find(" ") != std::string::npos)
 	{

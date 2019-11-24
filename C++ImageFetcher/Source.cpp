@@ -8,6 +8,15 @@ int main()
 
 	if (!FetchPicture("funny pictures", "lester.jpg"))
 		return -1;
+
+	//You can also leave all arguments empty like this and be prompted in the console to type the information needed
+	/*
+
+	if(!FetchPicture())
+		return -1;
+	
+	*/
+
 	return 0;
 
 }
