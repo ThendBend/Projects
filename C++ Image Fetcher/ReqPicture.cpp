@@ -444,7 +444,7 @@ std::string ReqPicture::GetImgURL(DWORD size, PBYTE msg)
 		}
 	}
 
-	//Try this later
+	//Try this later works better on Release than Debug
 
 	/*std::regex reg("https:\/\/.+\.jpg\"");
 	std::smatch m;
