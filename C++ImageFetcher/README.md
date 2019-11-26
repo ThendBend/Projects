@@ -1,4 +1,4 @@
-IMPORTANT NOTE: If you want to use this library, make sure you include "ReqPicture.h" before including anything else for example -
+//IMPORTANT NOTE: If you want to use this library, make sure you include "ReqPicture.h" before including anything else for example -
 #include "ReqPicture.h"
 #include <iostream>
 #include <windows.h>
